@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta
+      name="description"
+      content="Estimate how AI-driven productivity gains might affect compensation."
+    >
+    <title>AI Productivity & Pay Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="app.js" defer></script>
+  </head>
+
+  <body>
+    <main class="container">
+      <header class="page-header">
+        <p class="eyebrow">Compensation scenario planner</p>
+        <h1>Does 10× productivity mean 10× pay?</h1>
+        <p class="intro">
+          Explore how realized business value and an agreed share of that value
+          could affect compensation. The result is a scenario, not a salary
+          recommendation.
+        </p>
+      </header>
+
+      <section class="calculator" aria-labelledby="calculator-title">
+        <h2 id="calculator-title">Set your assumptions</h2>
+
+        <form id="calculator-form">
+          <div class="field">
+            <label for="currency">Currency</label>
+            <select id="currency" name="currency">
+              <option value="USD">USD — US Dollar</option>
+              <option value="EUR">EUR — Euro</option>
+              <option value="GBP">GBP — British Pound</option>
+              <option value="SAR">SAR — Saudi Riyal</option>
+              <option value="AED">AED — UAE Dirham</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="current-pay">Current annual compensation</label>
+            <input
+              id="current-pay"
+              name="currentPay"
+              type="number"
+              min="0"
+              step="1000"
+              value="100000"
+              required
+            >
+          </div>
+
+          <div class="field">
+            <label for="baseline-value">
+              Annual value attributable to your work at current productivity
+            </label>
+            <input
+              id="baseline-value"
+              name="baselineValue"
+              type="number"
+              min="0"
+              step="1000"
+              value="200000"
+              required
+            >
+            <small>
+              Use a defensible estimate, such as revenue or cost savings—not
+              raw task count.
+            </small>
+          </div>
+
+          <div class="field">
+            <label for="productivity">
+              Productivity multiplier
+              <output id="productivity-output" for="productivity">10×</output>
+            </label>
+            <input
+              id="productivity"
+              name="productivity"
+              type="number"
+              min="1"
+              max="100"
+              step="0.1"
+              value="10"
+              required
+            >
+          </div>
+
+          <div class="field">
+            <label for="realization-rate">
+              Share of extra productivity converted into business value
+              <output id="realization-output" for="realization-rate">50%</output>
+            </label>
+            <input
+              id="realization-rate"
+              name="realizationRate"
+              type="range"
+              min="0"
+              max="100"
+              step="1"
+              value="50"
+            >
+          </div>
+
+          <div class="field">
+            <label for="employee-share">
+              Employee’s share of the additional value
+              <output id="share-output" for="employee-share">20%</output>
+            </label>
+            <input
+              id="employee-share"
+              name="employeeShare"
+              type="range"
+              min="0"
+              max="100"
+              step="1"
+              value="20"
+            >
+          </div>
+        </form>
+      </section>
+
+      <section class="results" aria-labelledby="results-title" aria-live="polite">
+        <h2 id="results-title">Illustrative scenario</h2>
+
+        <dl class="result-list">
+          <div class="result-card">
+            <dt>Estimated additional annual business value</dt>
+            <dd id="additional-value">—</dd>
+          </div>
+          <div class="result-card">
+            <dt>Illustrative compensation increase</dt>
+            <dd id="pay-increase">—</dd>
+          </div>
+          <div class="result-card result-card-highlight">
+            <dt>Illustrative total annual compensation</dt>
+            <dd id="total-pay">—</dd>
+          </div>
+          <div class="result-card">
+            <dt>Implied compensation multiple</dt>
+            <dd id="pay-multiple">—</dd>
+          </div>
+        </dl>
+
+        <p class="note">
+          This model assumes the extra value is measurable and attributable to
+          your work. It does not account for market rates, team contributions,
+          risk, implementation costs, or negotiation power.
+        </p>
+      </section>
+
+      <footer class="page-footer">
+        <p>
+          A productivity gain can strengthen a case for higher compensation,
+          but it does not automatically determine the amount.
+        </p>
+      </footer>
+    </main>
+  </body>
+</html>
